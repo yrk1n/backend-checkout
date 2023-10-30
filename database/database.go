@@ -49,7 +49,7 @@ func ConnectDb() {
 
 	log.Println("running migrations")
 
-	db.AutoMigrate(&models.Cart{}, &models.Item{}, &models.VasItem{})
+	db.AutoMigrate(&models.Cart{}, &models.Item{}, &models.VasItem{}, &models.Promotion{})
 
 	DB = Dbinstance{
 		Db: db,

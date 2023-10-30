@@ -20,8 +20,10 @@ func main() {
 	cartRepo := repositories.NewGormCartRepository(db)
 	itemRepo := repositories.NewGORMItemRepository(db)
 	vasItemRepo := repositories.NewGORMVasItemRepository(db)
+	promoRepo := repositories.NewPromotionRepository(db)
+	promoService := services.NewPromotionService(promoRepo)
 
-	cartService := services.NewCartService(db, cartRepo, itemRepo, vasItemRepo)
+	cartService := services.NewCartService(db, cartRepo, itemRepo, promoService, vasItemRepo)
 
 	cart, err := cartService.InitializeCart()
 	if err != nil {

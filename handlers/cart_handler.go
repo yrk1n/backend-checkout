@@ -48,22 +48,6 @@ func (ch *CartHandler) AddItem(c *fiber.Ctx) error {
 	})
 }
 
-// func (ch *CartHandler) RemoveItem(c *fiber.Ctx) error {
-// 	// Uncommented version of RemoveItem
-// 	itemID, _ := strconv.Atoi(c.Params("itemId"))
-
-// 	err := ch.service.RemoveItemFromCart(1, itemID)
-// 	if err != nil {
-// 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-// 			"error": err.Error(),
-// 		})
-// 	}
-
-// 	return c.JSON(fiber.Map{
-// 		"message": "Item removed successfully",
-// 	})
-// }
-
 func (ch *CartHandler) AddVasItemToItem(c *fiber.Ctx) error {
 	var vasItem models.VasItem
 	if err := c.BodyParser(&vasItem); err != nil {

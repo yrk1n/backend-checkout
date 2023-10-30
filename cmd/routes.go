@@ -35,8 +35,6 @@ func setupRoutes(app *fiber.App, cartHandler *handlers.CartHandler) {
 
 	app.Post("/:itemId/add-vas", cartHandler.AddVasItemToItem)
 
-	// app.Delete("/item/:itemId", cartHandler.RemoveItem)
-
 	app.Post("/reset", cartHandler.ResetCart)
 
 	app.Get("/test-db", func(c *fiber.Ctx) error {
