@@ -52,3 +52,14 @@ func (r *GORMCartRepository) GetItems() ([]*models.Item, error) {
 	}
 	return cart.Items, nil
 }
+func (r *GORMCartRepository) Save(cart *models.Cart) error {
+	return r.db.Save(cart).Error
+}
+
+func (r *GORMCartRepository) GetByID(id int) (*models.Cart, error) {
+	var cart models.Cart
+	if err := r.db.Preload("Items").First(&cart, id).Error; err != nil {
+		return nil, err
+	}
+	return &cart, nil
+}

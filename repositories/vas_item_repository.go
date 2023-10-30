@@ -9,4 +9,5 @@ type VasItemRepository interface {
 	Save(item *models.VasItem) error
 	Delete(id int) error
 	GetAll() ([]*models.VasItem, error)
+	CreateVasItemForItem(itemID int, vasItem *models.VasItem) error
 }
