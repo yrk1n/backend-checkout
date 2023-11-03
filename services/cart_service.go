@@ -134,21 +134,9 @@ func (s *CartService) AddVasItemToItem(vasItem *models.VasItem) error {
 	return s.itemRepo.Save(item)
 }
 
-func (s *CartService) ResetCart(cartId int) error {
-	cart, err := s.cartRepo.GetByID(cartId)
-	if err != nil {
-		return err
-	}
-
-	for _, item := range cart.Items {
-		err := s.itemRepo.Delete(item.ItemId)
-		if err != nil {
-			return err
-		}
-	}
-
-	// TODO: ADD OPTION TO DELETE VASITEMS
-	return s.cartRepo.Save(cart)
+func (s *CartService) ResetCart() error {
+	hardCodedCartID := 1
+	return s.db.Where("cart_id = ?", hardCodedCartID).Delete(&models.Item{}).Error
 }
 
 func (s *CartService) GetCartByID(id int) (*models.Cart, error) {

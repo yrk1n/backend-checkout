@@ -19,5 +19,5 @@ type Item struct {
 	CartID          int      `json:"cart_id"`
 	Type            ItemType `json:"type"`
 
-	VasItems []*VasItem `gorm:"foreignKey:ParentItemId"`
+	VasItems []*VasItem `gorm:"foreignKey:ParentItemId;constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 }

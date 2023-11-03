@@ -6,5 +6,5 @@ type Cart struct {
 	MaxTotalItems  int     `json:"max_total_items"`
 	MaxTotalPrice  int     `json:"max_total_price"`
 	TotalPrice     float64 `json:"total_price"`
-	Items          []*Item `gorm:"foreignKey:CartID;references:CartID"`
+	Items          []*Item `gorm:"foreignKey:CartID;onDelete:CASCADE"`
 }

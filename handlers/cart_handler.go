@@ -89,7 +89,7 @@ func (ch *CartHandler) AddVasItemToItem(c *fiber.Ctx) error {
 }
 
 func (ch *CartHandler) ResetCart(c *fiber.Ctx) error {
-	err := ch.service.ResetCart(1)
+	err := ch.service.ResetCart()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": err.Error(),
